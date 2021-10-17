@@ -1,0 +1,12 @@
+# Ignore artifacts:
+build
+coverage
+
+.*
+/node_modules
+.gitignore
+.yarn/
+.vscode/
+
+# Ignore all HTML files:
+*.html
