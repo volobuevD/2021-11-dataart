@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@craco/craco": "^6.3.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -10,6 +11,8 @@
     "@types/node": "^12.0.0",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "antd": "^4.16.13",
+    "craco-less": "^1.20.0",
     "eslint-config-react-app": "^6.0.0",
     "node-sass": "4.14.1",
     "react": "^17.0.2",
@@ -19,9 +22,9 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
     "eject": "react-scripts eject",
     "prettier": "prettier  --write ."
   },
@@ -57,5 +60,6 @@
     "husky": "^7.0.2",
     "lint-staged": "^11.2.3",
     "prettier": "2.4.1"
-  }
+  },
+  "packageManager": "yarn@3.0.2"
 }
