@@ -22,10 +22,12 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "craco start",
+    "start-craco": "craco start",
+    "start": "nodemon --watch ./src/antd.customize.scss --exec \"yarn sass-to-less && yarn craco start\" --ext scss",
     "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject",
+    "sass-to-less": "node ./src/script-replace-sass-less",
     "prettier": "prettier  --write ."
   },
   "husky": {
@@ -59,6 +61,7 @@
   "devDependencies": {
     "husky": "^7.0.2",
     "lint-staged": "^11.2.3",
+    "nodemon": "1.19.0",
     "prettier": "2.4.1"
   },
   "packageManager": "yarn@3.0.2"
