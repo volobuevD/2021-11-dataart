@@ -1,20 +1,8 @@
-// import React, { FC } from 'react';
-// import { Button } from 'antd';
-// import './App.less';
-
-// const App: FC = () => (
-//   <div className="App">
-//     <Button type="primary">Button</Button>
-//   </div>
-// );
-
-// export default App;
-
 import React from 'react';
 import './App.less';
 // import fetchGraphQL from './fetchGraphQL';
 import graphql from 'babel-plugin-relay/macro';
-import { Button } from 'antd';
+import { Layout } from 'antd';
 import {
   RelayEnvironmentProvider,
   loadQuery,
@@ -23,16 +11,35 @@ import {
 } from 'react-relay/hooks';
 import RelayEnvironment from './RelayEnvironment';
 import { AppRepositoryNameQuery } from './__generated__/AppRepositoryNameQuery.graphql';
+import Organizations from './components/Organizations/Organizations';
 
 const { Suspense } = React;
+const { Header, Footer, Content } = Layout;
 
 // Define a query
 const RepositoryNameQuery = graphql`
-  query AppRepositoryNameQuery {
-    repository(owner: "facebook", name: "relay") {
-      name
+query AppRepositoryNameQuery {
+  user(login: "M0nica") {
+    name
+    organizations(first: 4) {
+      totalCount
+      nodes {
+        description
+        avatarUrl
+        name
+        id
+        membersWithRole {
+          totalCount
+        }
+        itemShowcase {
+          items {
+            totalCount
+          }
+        }
+      }
     }
   }
+}
 `;
 
 // Immediately load the query as our app starts. For a real app, we'd move this
@@ -59,13 +66,19 @@ interface AppProps {
 
 function App(props: AppProps) {
   const data = usePreloadedQuery(RepositoryNameQuery, props.preloadedQuery);
-
+  // console.log(data);
   return (
     <div className="App">
-      <header className="App-header">
-        <p>{data.repository?.name}</p>
-        <Button type="dashed">PRESS ME</Button>
-      </header>
+      <Layout>
+        <Header className="header">Header</Header>
+        <Content>      
+          <p>{data.user!.name}</p>
+          <Organizations organizations={data.user!.organizations}/>
+              {/* organizations={data.user?.organizations} */}
+        </Content>
+        <Footer>Footer</Footer>
+      </Layout>
+
     </div>
   );
 }
