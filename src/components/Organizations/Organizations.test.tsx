@@ -11,7 +11,7 @@ const onChange = jest.fn();     //фейковая функция
 describe('Organization component', () => {
     it('renders', () => {
         render(<Organizations/>);
-        expect (screen.getByText('No organizations')).toBeInTheDocument;
+        expect (screen.getByText('No organizations')).toBeInTheDocument();
         // expect(screen.getByText('No organizations')).toBeInTheDocument();
         // expect(screen.getByRole('section')).toBeInTheDocument();
     });
@@ -27,7 +27,7 @@ describe('Organization component', () => {
         render(<Organizations organizations={data2.user.organizations}/>);
         userEvent.hover(screen.getAllByRole('img')[0]);
         const avatar = screen.getAllByAltText('avatar');
-        expect(avatar[0]).toBeInTheDocument;
+        expect(avatar[0]).toBeInTheDocument();
     })
 })
 
