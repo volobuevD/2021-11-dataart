@@ -47,6 +47,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react-dom", "npm:17.0.9"],
             ["@types/react-relay", "npm:11.0.2"],
             ["@types/relay-runtime", "npm:12.0.0"],
+            ["@types/testing-library__jest-dom", "npm:5.14.1"],
             ["antd", "virtual:ce717e1c107a01c1524171d6ab51132107dc1684182790e227dc1bf1b4f207841d933019c59146063e4f1becf3f41059241e86a5ca3b1f49dd9dfd32021311d8#npm:4.16.13"],
             ["babel-plugin-relay", "virtual:ce717e1c107a01c1524171d6ab51132107dc1684182790e227dc1bf1b4f207841d933019c59146063e4f1becf3f41059241e86a5ca3b1f49dd9dfd32021311d8#npm:12.0.0"],
             ["craco-less", "virtual:ce717e1c107a01c1524171d6ab51132107dc1684182790e227dc1bf1b4f207841d933019c59146063e4f1becf3f41059241e86a5ca3b1f49dd9dfd32021311d8#npm:1.20.0"],
@@ -88,6 +89,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react-dom", "npm:17.0.9"],
             ["@types/react-relay", "npm:11.0.2"],
             ["@types/relay-runtime", "npm:12.0.0"],
+            ["@types/testing-library__jest-dom", "npm:5.14.1"],
             ["antd", "virtual:ce717e1c107a01c1524171d6ab51132107dc1684182790e227dc1bf1b4f207841d933019c59146063e4f1becf3f41059241e86a5ca3b1f49dd9dfd32021311d8#npm:4.16.13"],
             ["babel-plugin-relay", "virtual:ce717e1c107a01c1524171d6ab51132107dc1684182790e227dc1bf1b4f207841d933019c59146063e4f1becf3f41059241e86a5ca3b1f49dd9dfd32021311d8#npm:12.0.0"],
             ["craco-less", "virtual:ce717e1c107a01c1524171d6ab51132107dc1684182790e227dc1bf1b4f207841d933019c59146063e4f1becf3f41059241e86a5ca3b1f49dd9dfd32021311d8#npm:1.20.0"],
@@ -5962,8 +5964,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-jest-npm-27.0.2-f9ba43c7f9-814ad5f5d2.zip/node_modules/@types/jest/",
           "packageDependencies": [
             ["@types/jest", "npm:27.0.2"],
-            ["jest-diff", "npm:27.2.5"],
-            ["pretty-format", "npm:27.2.5"]
+            ["jest-diff", "npm:27.3.1"],
+            ["pretty-format", "npm:27.3.1"]
           ],
           "linkType": "HARD",
         }]
@@ -14316,14 +14318,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
           "linkType": "HARD",
         }],
-        ["npm:27.2.5", {
-          "packageLocation": "./.yarn/cache/jest-diff-npm-27.2.5-b86704c3d4-05a2fd97b5.zip/node_modules/jest-diff/",
+        ["npm:27.3.1", {
+          "packageLocation": "./.yarn/cache/jest-diff-npm-27.3.1-c347dd1e5a-49231a4ac4.zip/node_modules/jest-diff/",
           "packageDependencies": [
-            ["jest-diff", "npm:27.2.5"],
+            ["jest-diff", "npm:27.3.1"],
             ["chalk", "npm:4.1.0"],
             ["diff-sequences", "npm:27.0.6"],
-            ["jest-get-type", "npm:27.0.6"],
-            ["pretty-format", "npm:27.2.5"]
+            ["jest-get-type", "npm:27.3.1"],
+            ["pretty-format", "npm:27.3.1"]
           ],
           "linkType": "HARD",
         }]
@@ -14391,10 +14393,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
           "linkType": "HARD",
         }],
-        ["npm:27.0.6", {
-          "packageLocation": "./.yarn/cache/jest-get-type-npm-27.0.6-635fb783d0-2d4c1381bb.zip/node_modules/jest-get-type/",
+        ["npm:27.3.1", {
+          "packageLocation": "./.yarn/cache/jest-get-type-npm-27.3.1-fdb27a0157-b0b8db1d77.zip/node_modules/jest-get-type/",
           "packageDependencies": [
-            ["jest-get-type", "npm:27.0.6"]
+            ["jest-get-type", "npm:27.3.1"]
           ],
           "linkType": "HARD",
         }]
@@ -18419,17 +18421,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@jest/types", "npm:26.6.2"],
             ["ansi-regex", "npm:5.0.0"],
             ["ansi-styles", "npm:4.3.0"],
-            ["react-is", "npm:17.0.1"]
-          ],
-          "linkType": "HARD",
-        }],
-        ["npm:27.2.5", {
-          "packageLocation": "./.yarn/cache/pretty-format-npm-27.2.5-ff634924d7-83adebba0a.zip/node_modules/pretty-format/",
-          "packageDependencies": [
-            ["pretty-format", "npm:27.2.5"],
-            ["@jest/types", "npm:27.2.5"],
-            ["ansi-regex", "npm:5.0.1"],
-            ["ansi-styles", "npm:5.2.0"],
             ["react-is", "npm:17.0.1"]
           ],
           "linkType": "HARD",

@@ -1,24 +1,33 @@
 import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom'
 import userEvent from '@testing-library/user-event';    //имитация действия пользователя
 
 import Organizations from './Organizations';
 import data from '../../data.json';
+import data2 from '../../data';
 
 const onChange = jest.fn();     //фейковая функция
 
 describe('Organization component', () => {
-    xit('renders', () => {
+    it('renders', () => {
         render(<Organizations/>);
-        expect(screen.getByText('No organizations')).toBeInTheDocument();
+        expect (screen.getByText('No organizations')).toBeInTheDocument;
+        // expect(screen.getByText('No organizations')).toBeInTheDocument();
         // expect(screen.getByRole('section')).toBeInTheDocument();
     });
 
-    fit('render img', () => {
-        render(<Organizations organizations={data.user.organizations}/>);
-        screen.debug();     //отображение верстки
-        const logo = screen.getByRole('img');
-        expect(logo).toHaveAttribute('avatar');
-        // expect(screen.getByRole('img')).toBeInTheDocument();
+    it('render img', () => {
+        render(<Organizations organizations={data2.user.organizations}/>);
+        //screen.debug();     //отображение верстки
+        const logo = screen.getAllByRole('img');
+        expect(logo[0]).toHaveAttribute('src');
+    })
+
+    it('render popover', () => {
+        render(<Organizations organizations={data2.user.organizations}/>);
+        userEvent.hover(screen.getAllByRole('img')[0]);
+        const avatar = screen.getAllByAltText('avatar');
+        expect(avatar[0]).toBeInTheDocument;
     })
 })
 

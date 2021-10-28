@@ -4,5 +4,5 @@ import App from './App'
 
 it('renders learn react link', () => {
   render(<App />)
-  // expect(screen.queryByText('BLA')).toBeInTheDocument();
+  expect(screen.queryByText('Monica Powell')).toBeInTheDocument;
 })

@@ -1,55 +1,55 @@
-import React from 'react';
-import './App.less';
-// import fetchGraphQL from './fetchGraphQL';
-import graphql from 'babel-plugin-relay/macro';
-import { Layout } from 'antd';
-import {
-  RelayEnvironmentProvider,
-  loadQuery,
-  usePreloadedQuery,
-  PreloadedQuery
-} from 'react-relay/hooks';
-import RelayEnvironment from './RelayEnvironment';
-import { AppRepositoryNameQuery } from './__generated__/AppRepositoryNameQuery.graphql';
-import Organizations from './components/Organizations/Organizations';
+import React from 'react'
+import './App.less'
+import { Layout } from 'antd'
 
-const { Suspense } = React;
-const { Header, Footer, Content } = Layout;
+import graphql from 'babel-plugin-relay/macro'
+import { AppRepositoryNameQuery } from './__generated__/AppRepositoryNameQuery.graphql' //берем наш сгенерированный репозиторий
+
+import { RelayEnvironmentProvider, loadQuery, usePreloadedQuery, PreloadedQuery } from 'react-relay/hooks'
+import RelayEnvironment from './RelayEnvironment'
+
+import Organizations from './components/Organizations/'
+
+const { Suspense } = React
+const { Header, Footer, Content } = Layout //из ант достали футер, хедер
 
 // Define a query
+// Описываем запрос из нашего репозитория
 const RepositoryNameQuery = graphql`
-query AppRepositoryNameQuery {
-  user(login: "M0nica") {
-    name
-    organizations(first: 4) {
-      totalCount
-      nodes {
-        description
-        avatarUrl
-        name
-        id
-        membersWithRole {
-          totalCount
-        }
-        itemShowcase {
-          items {
+  query AppRepositoryNameQuery {
+    user(login: "M0nica") {
+      name
+      organizations(first: 4) {
+        totalCount
+        nodes {
+          description
+          avatarUrl
+          name
+          id
+          membersWithRole {
             totalCount
+          }
+          itemShowcase {
+            items {
+              totalCount
+            }
           }
         }
       }
     }
   }
-}
-`;
+`
 
 // Immediately load the query as our app starts. For a real app, we'd move this
 // into our routing configuration, preloading data as we transition to new routes.
+// При запуске приложения сразу отсылается наш созданный запрос
 const preloadedQuery = loadQuery<AppRepositoryNameQuery>(
-  RelayEnvironment, 
-  RepositoryNameQuery, 
+  RelayEnvironment, //релей
+  RepositoryNameQuery, //созданный запрос
   {
-  /* query variables */
-});
+    /* query variables */
+  }
+)
 
 // Inner component that reads the preloaded query results via `usePreloadedQuery()`.
 // This works as follows:
@@ -65,22 +65,21 @@ interface AppProps {
 }
 
 function App(props: AppProps) {
-  const data = usePreloadedQuery(RepositoryNameQuery, props.preloadedQuery);
+  const data = usePreloadedQuery(RepositoryNameQuery, props.preloadedQuery)
   // console.log(data);
   return (
     <div className="App">
       <Layout>
         <Header className="header">Header</Header>
-        <Content>      
+        <Content>
           <p>{data.user!.name}</p>
-          <Organizations organizations={data.user!.organizations}/>
-              {/* organizations={data.user?.organizations} */}
+          <Organizations organizations={data.user!.organizations} />
+          {/* organizations={data.user?.organizations} */}
         </Content>
         <Footer>Footer</Footer>
       </Layout>
-
     </div>
-  );
+  )
 }
 
 // The above component needs to know how to access the Relay environment, and we

@@ -2,13 +2,13 @@
 module.exports = {
   // ...
   // Configuration options accepted by the `relay-compiler` command-line tool and `babel-plugin-relay`.
-  exclude: ["**/node_modules/**", "**/__mocks__/**", "**/__generated__/**"],
-  artifactDirectory: "./src/__generated__",
-  schema: "schema.graphql",
-  src: "./src",
+  exclude: ['**/node_modules/**', '**/__mocks__/**', '**/__generated__/**'],
+  artifactDirectory: './src/__generated__',
+  schema: 'schema.graphql',
+  src: './src',
   // watch: true,
-  language: "typescript",
+  language: 'typescript',
   customScalars: {
-    DateTime: "string",
-  }
+    DateTime: 'string',
+  },
 }
