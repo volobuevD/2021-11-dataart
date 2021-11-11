@@ -13,7 +13,7 @@ h4 {
   background-color: #ffffff;
 }
 
-.logo-container {
+.logoContainer {
   display: flex;
   justify-content: left;
   flex-direction: row;
@@ -35,20 +35,20 @@ h4 {
   box-shadow: 0 0 0 1px rgba(27, 31, 36, 0.15);
 }
 
-.pop-window {
+.popWindow {
   max-width: 358px;
   padding: 0;
   margin: 0;
 }
 
-.pop-content {
+.popContent {
   display: flex;
   justify-content: left;
   flex-direction: row;
   margin: 0;
 }
 
-.pop-avatar {
+.popAvatar {
   width: 44px;
   height: 44px;
   background-color: #ffffff;
@@ -58,22 +58,22 @@ h4 {
   box-shadow: 0 0 0 1px rgba(27, 31, 36, 0.15);
 }
 
-.pop-header {
+.popHeader {
   font-size: 16;
   margin-bottom: 2px;
   font-weight: bold;
 }
 
-.pop-header:hover {
+.popHeader:hover {
   color: #0969da;
   cursor: pointer;
 }
 
-.pop-text {
+.popText {
   margin: 0;
 }
 
-.pop-footer {
+.popFooter {
   display: flex;
   justify-content: left;
   flex-direction: row;
@@ -83,7 +83,7 @@ h4 {
   margin: 0;
 }
 
-.pop-footer p {
+.popFooter p {
   margin: 0 10px 0 5px;
   padding: 0;
   white-space: nowrap;

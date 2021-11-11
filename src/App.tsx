@@ -10,16 +10,17 @@ import RelayEnvironment from './RelayEnvironment'
 
 import Organizations from './components/Organizations/'
 
+
 const { Suspense } = React
 const { Header, Footer, Content } = Layout //из ант достали футер, хедер
 
 // Define a query
 // Описываем запрос из нашего репозитория
 const RepositoryNameQuery = graphql`
-  query AppRepositoryNameQuery {
+  query AppRepositoryNameQuery($count: Int) {
     user(login: "M0nica") {
       name
-      organizations(first: 4) {
+      organizations(first: $count) {
         totalCount
         nodes {
           description
@@ -44,10 +45,12 @@ const RepositoryNameQuery = graphql`
 // into our routing configuration, preloading data as we transition to new routes.
 // При запуске приложения сразу отсылается наш созданный запрос
 const preloadedQuery = loadQuery<AppRepositoryNameQuery>(
+  // const data = useLazyLoadQuery<AppRepositoryNameQuery>(
   RelayEnvironment, //релей
   RepositoryNameQuery, //созданный запрос
   {
     /* query variables */
+    count: 4
   }
 )
 
@@ -69,11 +72,12 @@ function App(props: AppProps) {
   // console.log(data);
   return (
     <div className="App">
+      {/* <Test /> */}
       <Layout>
         <Header className="header">Header</Header>
         <Content>
           <p>{data.user!.name}</p>
-          <Organizations organizations={data.user!.organizations} />
+          <Organizations />
           {/* organizations={data.user?.organizations} */}
         </Content>
         <Footer>Footer</Footer>

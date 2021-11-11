@@ -6,29 +6,55 @@ import Organizations from './Organizations';
 import data from '../../data.json';
 import data2 from '../../data';
 
+import {
+    createMockEnvironment,
+    MockPayloadGenerator,
+} from 'relay-test-utils';
+
+
 const onChange = jest.fn();     //фейковая функция
 
-describe('Organization component', () => {
+describe.skip('Organization component', () => {
+
     it('renders', () => {
-        render(<Organizations/>);
-        expect (screen.getByText('No organizations')).toBeInTheDocument();
+        render(<Organizations />);
+        expect(screen.getByText('No organizations')).toBeInTheDocument();
         // expect(screen.getByText('No organizations')).toBeInTheDocument();
         // expect(screen.getByRole('section')).toBeInTheDocument();
     });
 
     it('render img', () => {
-        render(<Organizations organizations={data2.user.organizations}/>);
+        render(<Organizations organizations={data2.user.organizations} />);
         //screen.debug();     //отображение верстки
         const logo = screen.getAllByRole('img');
         expect(logo[0]).toHaveAttribute('src');
     })
 
     it('render popover', () => {
-        render(<Organizations organizations={data2.user.organizations}/>);
+        render(<Organizations organizations={data2.user.organizations} />);
         userEvent.hover(screen.getAllByRole('img')[0]);
         const avatar = screen.getAllByAltText('avatar');
         expect(avatar[0]).toBeInTheDocument();
     })
+})
+
+
+describe.skip('Organization Relay component', () => {
+
+    // Relay may trigger 3 different states
+    // for this component: Loading, Error, Data Loaded
+    // Here is examples of tests for those states.
+    it('Loading State', () => {
+        const environment = createMockEnvironment();
+        const renderer = ReactTestRenderer.create(
+            <Organizations environment={environment} />,
+        );
+
+        // Here we just verify that the spinner is rendered
+        expect(
+            renderer.root.find(node => node.props['data-testid'] === 'spinner'),
+        ).toBeDefined();
+    });
 })
 
 

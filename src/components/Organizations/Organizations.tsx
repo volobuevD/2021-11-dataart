@@ -1,26 +1,57 @@
-import React from 'react'
 import { Popover, Divider } from 'antd'
 import { TeamOutlined, BookOutlined } from '@ant-design/icons'
 
-import './Organizations.scss'
+import graphql from 'babel-plugin-relay/macro'
+import { useLazyLoadQuery } from 'react-relay/hooks'
 
-import { AppRepositoryNameQueryResponse } from '../../__generated__/AppRepositoryNameQuery.graphql'
+import { OrganizationsQuery } from '../../__generated__/OrganizationsQuery.graphql';
 
-interface OrganizationsProps {
-  organizations?: NonNullable<AppRepositoryNameQueryResponse['user']>['organizations']    //NonNullable удалит null / undefined из типа.
-}
+import styles from './Organizations.module.scss'
+// interface OrganizationsProps {
+  // organizations?: NonNullable<AppRepositoryNameQuery['user']>['organizations']    //NonNullable удалит null / undefined из типа.
+// }
 
-const Organizations = (props: OrganizationsProps) => {
-  // console.log(props)
-  const { organizations } = props
-  // console.log(organizations)
+// Define a query
+const RepositoryNameQuery = graphql`
+  query OrganizationsQuery($count: Int) {
+    user(login: "M0nica") {
+      name
+      organizations(first: $count) {
+        totalCount
+        nodes {
+          description
+          avatarUrl
+          name
+          id
+          membersWithRole {
+            totalCount
+          }
+          itemShowcase {
+            items {
+              totalCount
+            }
+          }
+        }
+      }
+    }
+  }
+`
+
+const Organizations = () => {
+
+  const data = useLazyLoadQuery <OrganizationsQuery>(
+    RepositoryNameQuery,
+    {count: 4},
+    {fetchPolicy: 'store-or-network'},
+  );
 
   return (
-    <section className="organizations">
+    <section className={styles.organizations}>
+      <div>{data.user!.name}</div>
       <h4>Organizations</h4>
-      <div className="logo-container">
-        {organizations ? (
-          organizations.nodes?.map(item => {
+      <div className={styles.logoContainer}>
+        {data.user!.organizations ? (
+          data.user!.organizations.nodes?.map(item => {
             return item ? (
               <div key={item.id}>
                 <Popover
@@ -28,36 +59,36 @@ const Organizations = (props: OrganizationsProps) => {
                   // visible={true}
                   overlayStyle={{ width: '20vw' }}
                   content={
-                    <div className="pop-window">
-                      <div className="pop-content">
-                        <img className="pop-avatar" src={`${item.avatarUrl}`} alt="avatar" />
-                        <div className="pop-text">
-                          <p className="pop-header">{item.name}</p>
-                          <p className="pop-text">{item.description}</p>
+                    <div className={styles.popWindow}>
+                      <div className={styles.popContent}>
+                        <img className={styles.popAvatar} src={`${item.avatarUrl}`} alt="avatar" />
+                        <div className={styles.popText}>
+                          <p className={styles.popHeader}>{item.name}</p>
+                          <p className={styles.popText}>{item.description}</p>
                         </div>
                       </div>
                       <Divider style={{ margin: '5px 0 5px 0', padding: '0', width: '100%' }} />
-                      <div className="pop-footer">
+                      <div className={styles.popFooter}>
                         <BookOutlined />
-                        <p>{item.membersWithRole.totalCount} repositories</p>
+                          <p>{item.membersWithRole.totalCount} repositories</p>
                         <TeamOutlined />
                         <p>{item.itemShowcase.items.totalCount} members</p>
                       </div>
                     </div>
                   }
                 >
-                  <img className="avatar" src={`${item.avatarUrl}`} alt="avatar" />
+                  <img className={styles.avatar} src={`${item.avatarUrl}`} alt="avatar" />
                 </Popover>
               </div>
             ) : null
           })
         ) : (
-          <p>No organizations</p>
+          <div>No organizations</div>
         )}
       </div>
-      <p className="block">Block or Report</p>
+      <div className={styles.block}>Block or Report</div>
     </section>
   )
 }
 
-export default Organizations
+export default Organizations;

@@ -34,7 +34,7 @@
     "relay": "yarn run relay-compiler --watchman false $@",
     "eject": "react-scripts eject",
     "sass-to-less": "node ./src/script-replace-sass-less",
-    "prettier": "prettier  --write ."
+    "prettier": "prettier --write ."
   },
   "husky": {
     "hooks": {

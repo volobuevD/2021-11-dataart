@@ -4,10 +4,10 @@
 
 import { ConcreteRequest } from "relay-runtime";
 
-export type AppRepositoryNameQueryVariables = {
+export type OrganizationsQueryVariables = {
     count?: number | null;
 };
-export type AppRepositoryNameQueryResponse = {
+export type OrganizationsQueryResponse = {
     readonly user: {
         readonly name: string | null;
         readonly organizations: {
@@ -29,15 +29,15 @@ export type AppRepositoryNameQueryResponse = {
         };
     } | null;
 };
-export type AppRepositoryNameQuery = {
-    readonly response: AppRepositoryNameQueryResponse;
-    readonly variables: AppRepositoryNameQueryVariables;
+export type OrganizationsQuery = {
+    readonly response: OrganizationsQueryResponse;
+    readonly variables: OrganizationsQueryVariables;
 };
 
 
 
 /*
-query AppRepositoryNameQuery(
+query OrganizationsQuery(
   $count: Int
 ) {
   user(login: "M0nica") {
@@ -184,7 +184,7 @@ return {
     "argumentDefinitions": (v0/*: any*/),
     "kind": "Fragment",
     "metadata": null,
-    "name": "AppRepositoryNameQuery",
+    "name": "OrganizationsQuery",
     "selections": [
       {
         "alias": null,
@@ -207,7 +207,7 @@ return {
   "operation": {
     "argumentDefinitions": (v0/*: any*/),
     "kind": "Operation",
-    "name": "AppRepositoryNameQuery",
+    "name": "OrganizationsQuery",
     "selections": [
       {
         "alias": null,
@@ -226,14 +226,14 @@ return {
     ]
   },
   "params": {
-    "cacheID": "dd1c5d6e4ce53379ec5526d93cd89d3c",
+    "cacheID": "0b703d9b7b88a2599de12d0d02adf7a5",
     "id": null,
     "metadata": {},
-    "name": "AppRepositoryNameQuery",
+    "name": "OrganizationsQuery",
     "operationKind": "query",
-    "text": "query AppRepositoryNameQuery(\n  $count: Int\n) {\n  user(login: \"M0nica\") {\n    name\n    organizations(first: $count) {\n      totalCount\n      nodes {\n        description\n        avatarUrl\n        name\n        id\n        membersWithRole {\n          totalCount\n        }\n        itemShowcase {\n          items {\n            totalCount\n          }\n        }\n      }\n    }\n    id\n  }\n}\n"
+    "text": "query OrganizationsQuery(\n  $count: Int\n) {\n  user(login: \"M0nica\") {\n    name\n    organizations(first: $count) {\n      totalCount\n      nodes {\n        description\n        avatarUrl\n        name\n        id\n        membersWithRole {\n          totalCount\n        }\n        itemShowcase {\n          items {\n            totalCount\n          }\n        }\n      }\n    }\n    id\n  }\n}\n"
   }
 };
 })();
-(node as any).hash = 'a8371934df327bd8659ef11611f982ed';
+(node as any).hash = 'a183b2dd83165021808e6aba60fedd2f';
 export default node;
