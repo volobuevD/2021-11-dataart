@@ -2,61 +2,61 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom'
 import userEvent from '@testing-library/user-event';    //имитация действия пользователя
 
+//Relay testing
+import React from 'react';
+const { Suspense } = React;
+import { RelayEnvironmentProvider } from 'react-relay';
+import { createMockEnvironment, MockPayloadGenerator } from 'relay-test-utils';
+
 import Organizations from './Organizations';
+import { OrganizationsQuery } from '../../__generated__/OrganizationsQuery.graphql';
+
 import data from '../../data.json';
 import data2 from '../../data';
 
-import {
-    createMockEnvironment,
-    MockPayloadGenerator,
-} from 'relay-test-utils';
+it('renders test', async () => {
+    const mockEnvironment = createMockEnvironment();
+
+    mockEnvironment.mock.queueOperationResolver((operation) =>
+    // или mockEnvironment.mock.resolveMostRecentOperation()
+        MockPayloadGenerator.generate(operation),
+    );
+
+    render(
+        <RelayEnvironmentProvider environment={mockEnvironment}>
+            <Suspense fallback="Loading...">
+                <Organizations />
+            </Suspense>
+        </RelayEnvironmentProvider>
+    );
+
+    screen.debug();
 
 
-const onChange = jest.fn();     //фейковая функция
+    const titleSection = await screen.findByText('Organizations');
+    expect(titleSection).toBeInTheDocument();
 
-describe.skip('Organization component', () => {
-
-    it('renders', () => {
-        render(<Organizations />);
-        expect(screen.getByText('No organizations')).toBeInTheDocument();
-        // expect(screen.getByText('No organizations')).toBeInTheDocument();
-        // expect(screen.getByRole('section')).toBeInTheDocument();
-    });
-
-    it('render img', () => {
-        render(<Organizations organizations={data2.user.organizations} />);
-        //screen.debug();     //отображение верстки
-        const logo = screen.getAllByRole('img');
-        expect(logo[0]).toHaveAttribute('src');
-    })
-
-    it('render popover', () => {
-        render(<Organizations organizations={data2.user.organizations} />);
-        userEvent.hover(screen.getAllByRole('img')[0]);
-        const avatar = screen.getAllByAltText('avatar');
-        expect(avatar[0]).toBeInTheDocument();
-    })
-})
+});
 
 
-describe.skip('Organization Relay component', () => {
+//=============================================================
+// function renderComponent() {
+//     const mockEnvironment = createMockEnvironment();
 
-    // Relay may trigger 3 different states
-    // for this component: Loading, Error, Data Loaded
-    // Here is examples of tests for those states.
-    it('Loading State', () => {
-        const environment = createMockEnvironment();
-        const renderer = ReactTestRenderer.create(
-            <Organizations environment={environment} />,
-        );
+//     const { rerender, container } = render(
+//         <RelayEnvironmentProvider environment={mockEnvironment}>
+//             <Suspense fallback="Loading...">
+//                 <Organizations />
+//             </Suspense>
+//         </RelayEnvironmentProvider>
+//     );
 
-        // Here we just verify that the spinner is rendered
-        expect(
-            renderer.root.find(node => node.props['data-testid'] === 'spinner'),
-        ).toBeDefined();
-    });
-})
+//     return {
+//         rerender
+//     }
+// }
 
+// //=============================================================
 
   // it('', () => {})       //сам тест
   // xit    //пропустить тест

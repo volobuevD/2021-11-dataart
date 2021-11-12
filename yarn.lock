@@ -21,6 +21,7 @@ __metadata:
     "@types/react-dom": ^17.0.0
     "@types/react-relay": ^11.0.2
     "@types/relay-runtime": ^12.0.0
+    "@types/relay-test-utils": ^6.0.5
     "@types/testing-library__jest-dom": ^5.14.1
     antd: ^4.16.13
     babel-plugin-relay: ^12.0.0
@@ -28,6 +29,7 @@ __metadata:
     eslint-config-react-app: ^6.0.0
     graphql: ^15.6.1
     husky: ^7.0.2
+    identity-obj-proxy: ^3.0.0
     lint-staged: ^11.2.3
     node-sass: 4.14.1
     nodemon: 1.19.0
@@ -40,6 +42,7 @@ __metadata:
     relay-compiler-language-typescript: ^14.2.1
     relay-config: ^12.0.0
     relay-runtime: ^12.0.0
+    relay-test-utils: ^12.0.0
     typescript: ^4.1.2
     web-vitals: ^1.0.1
   languageName: unknown
@@ -3164,7 +3167,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-relay@npm:^11.0.2":
+"@types/react-relay@npm:*, @types/react-relay@npm:^11.0.2":
   version: 11.0.2
   resolution: "@types/react-relay@npm:11.0.2"
   dependencies:
@@ -3189,6 +3192,17 @@ __metadata:
   version: 12.0.0
   resolution: "@types/relay-runtime@npm:12.0.0"
   checksum: 06c4fa088934fe42b23210c34d71202fa917190e0922b005ae157dcf4282b5fde814b88cf0a0b7ba1935c882248416aab84a62e3963d7533f37301a0842089b0
+  languageName: node
+  linkType: hard
+
+"@types/relay-test-utils@npm:^6.0.5":
+  version: 6.0.5
+  resolution: "@types/relay-test-utils@npm:6.0.5"
+  dependencies:
+    "@types/react": "*"
+    "@types/react-relay": "*"
+    "@types/relay-runtime": "*"
+  checksum: b596ffb2f5eb736eee87190d17c32691b81ddc3fcbfd7e83530380d6ee6406f6f5e804dd5b836e225ed789ce992a070354ee8c311431a24b59f7ae94db356f68
   languageName: node
   linkType: hard
 
@@ -9088,7 +9102,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"identity-obj-proxy@npm:3.0.0":
+"identity-obj-proxy@npm:3.0.0, identity-obj-proxy@npm:^3.0.0":
   version: 3.0.0
   resolution: "identity-obj-proxy@npm:3.0.0"
   dependencies:
@@ -15182,6 +15196,20 @@ fsevents@^1.2.7:
     fbjs: ^3.0.0
     invariant: ^2.2.4
   checksum: 51cdc8a5e04188982452ae4e7c6ac7d6375ee769130d24ce8e8f9cdd45aa7e11ecd68670f56e30dcee1b4974585e88ecce19e69a9868b80cda0db7678c3b8f0a
+  languageName: node
+  linkType: hard
+
+"relay-test-utils@npm:^12.0.0":
+  version: 12.0.0
+  resolution: "relay-test-utils@npm:12.0.0"
+  dependencies:
+    "@babel/runtime": ^7.0.0
+    fbjs: ^3.0.0
+    invariant: ^2.2.4
+    relay-runtime: 12.0.0
+  peerDependencies:
+    graphql: ^15.0.0
+  checksum: a7ba01c62fdbbd611ca0c87dc85d84abffd9999b3058c57b541b79c01c92a15b4fae5d9286fd22fce5d0fca9e9c875a0725b6663e7084641d1e877dd602df4ea
   languageName: node
   linkType: hard
 

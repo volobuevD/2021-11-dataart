@@ -47,6 +47,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react-dom", "npm:17.0.9"],
             ["@types/react-relay", "npm:11.0.2"],
             ["@types/relay-runtime", "npm:12.0.0"],
+            ["@types/relay-test-utils", "npm:6.0.5"],
             ["@types/testing-library__jest-dom", "npm:5.14.1"],
             ["antd", "virtual:ce717e1c107a01c1524171d6ab51132107dc1684182790e227dc1bf1b4f207841d933019c59146063e4f1becf3f41059241e86a5ca3b1f49dd9dfd32021311d8#npm:4.16.13"],
             ["babel-plugin-relay", "virtual:ce717e1c107a01c1524171d6ab51132107dc1684182790e227dc1bf1b4f207841d933019c59146063e4f1becf3f41059241e86a5ca3b1f49dd9dfd32021311d8#npm:12.0.0"],
@@ -54,6 +55,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-config-react-app", "virtual:ce717e1c107a01c1524171d6ab51132107dc1684182790e227dc1bf1b4f207841d933019c59146063e4f1becf3f41059241e86a5ca3b1f49dd9dfd32021311d8#npm:6.0.0"],
             ["graphql", "npm:15.6.1"],
             ["husky", "npm:7.0.2"],
+            ["identity-obj-proxy", "npm:3.0.0"],
             ["lint-staged", "npm:11.2.3"],
             ["node-sass", "npm:4.14.1"],
             ["nodemon", "npm:1.19.0"],
@@ -66,6 +68,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["relay-compiler-language-typescript", "virtual:ce717e1c107a01c1524171d6ab51132107dc1684182790e227dc1bf1b4f207841d933019c59146063e4f1becf3f41059241e86a5ca3b1f49dd9dfd32021311d8#npm:14.2.1"],
             ["relay-config", "virtual:ce717e1c107a01c1524171d6ab51132107dc1684182790e227dc1bf1b4f207841d933019c59146063e4f1becf3f41059241e86a5ca3b1f49dd9dfd32021311d8#npm:12.0.0"],
             ["relay-runtime", "npm:12.0.0"],
+            ["relay-test-utils", "virtual:ce717e1c107a01c1524171d6ab51132107dc1684182790e227dc1bf1b4f207841d933019c59146063e4f1becf3f41059241e86a5ca3b1f49dd9dfd32021311d8#npm:12.0.0"],
             ["typescript", "patch:typescript@npm%3A4.4.4#~builtin<compat/typescript>::version=4.4.4&hash=32657b"],
             ["web-vitals", "npm:1.1.2"]
           ],
@@ -89,6 +92,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react-dom", "npm:17.0.9"],
             ["@types/react-relay", "npm:11.0.2"],
             ["@types/relay-runtime", "npm:12.0.0"],
+            ["@types/relay-test-utils", "npm:6.0.5"],
             ["@types/testing-library__jest-dom", "npm:5.14.1"],
             ["antd", "virtual:ce717e1c107a01c1524171d6ab51132107dc1684182790e227dc1bf1b4f207841d933019c59146063e4f1becf3f41059241e86a5ca3b1f49dd9dfd32021311d8#npm:4.16.13"],
             ["babel-plugin-relay", "virtual:ce717e1c107a01c1524171d6ab51132107dc1684182790e227dc1bf1b4f207841d933019c59146063e4f1becf3f41059241e86a5ca3b1f49dd9dfd32021311d8#npm:12.0.0"],
@@ -96,6 +100,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-config-react-app", "virtual:ce717e1c107a01c1524171d6ab51132107dc1684182790e227dc1bf1b4f207841d933019c59146063e4f1becf3f41059241e86a5ca3b1f49dd9dfd32021311d8#npm:6.0.0"],
             ["graphql", "npm:15.6.1"],
             ["husky", "npm:7.0.2"],
+            ["identity-obj-proxy", "npm:3.0.0"],
             ["lint-staged", "npm:11.2.3"],
             ["node-sass", "npm:4.14.1"],
             ["nodemon", "npm:1.19.0"],
@@ -108,6 +113,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["relay-compiler-language-typescript", "virtual:ce717e1c107a01c1524171d6ab51132107dc1684182790e227dc1bf1b4f207841d933019c59146063e4f1becf3f41059241e86a5ca3b1f49dd9dfd32021311d8#npm:14.2.1"],
             ["relay-config", "virtual:ce717e1c107a01c1524171d6ab51132107dc1684182790e227dc1bf1b4f207841d933019c59146063e4f1becf3f41059241e86a5ca3b1f49dd9dfd32021311d8#npm:12.0.0"],
             ["relay-runtime", "npm:12.0.0"],
+            ["relay-test-utils", "virtual:ce717e1c107a01c1524171d6ab51132107dc1684182790e227dc1bf1b4f207841d933019c59146063e4f1becf3f41059241e86a5ca3b1f49dd9dfd32021311d8#npm:12.0.0"],
             ["typescript", "patch:typescript@npm%3A4.4.4#~builtin<compat/typescript>::version=4.4.4&hash=32657b"],
             ["web-vitals", "npm:1.1.2"]
           ],
@@ -6105,6 +6111,18 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         ["npm:12.0.0", {
           "packageLocation": "./.yarn/cache/@types-relay-runtime-npm-12.0.0-1d56ada21f-06c4fa0889.zip/node_modules/@types/relay-runtime/",
           "packageDependencies": [
+            ["@types/relay-runtime", "npm:12.0.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@types/relay-test-utils", [
+        ["npm:6.0.5", {
+          "packageLocation": "./.yarn/cache/@types-relay-test-utils-npm-6.0.5-f3a9d6136a-b596ffb2f5.zip/node_modules/@types/relay-test-utils/",
+          "packageDependencies": [
+            ["@types/relay-test-utils", "npm:6.0.5"],
+            ["@types/react", "npm:17.0.30"],
+            ["@types/react-relay", "npm:11.0.2"],
             ["@types/relay-runtime", "npm:12.0.0"]
           ],
           "linkType": "HARD",
@@ -20454,6 +20472,32 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@babel/runtime", "npm:7.15.4"],
             ["fbjs", "npm:3.0.0"],
             ["invariant", "npm:2.2.4"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["relay-test-utils", [
+        ["npm:12.0.0", {
+          "packageLocation": "./.yarn/cache/relay-test-utils-npm-12.0.0-579d6b3b59-a7ba01c62f.zip/node_modules/relay-test-utils/",
+          "packageDependencies": [
+            ["relay-test-utils", "npm:12.0.0"]
+          ],
+          "linkType": "SOFT",
+        }],
+        ["virtual:ce717e1c107a01c1524171d6ab51132107dc1684182790e227dc1bf1b4f207841d933019c59146063e4f1becf3f41059241e86a5ca3b1f49dd9dfd32021311d8#npm:12.0.0", {
+          "packageLocation": "./.yarn/__virtual__/relay-test-utils-virtual-aed07d3e95/0/cache/relay-test-utils-npm-12.0.0-579d6b3b59-a7ba01c62f.zip/node_modules/relay-test-utils/",
+          "packageDependencies": [
+            ["relay-test-utils", "virtual:ce717e1c107a01c1524171d6ab51132107dc1684182790e227dc1bf1b4f207841d933019c59146063e4f1becf3f41059241e86a5ca3b1f49dd9dfd32021311d8#npm:12.0.0"],
+            ["@babel/runtime", "npm:7.15.4"],
+            ["@types/graphql", null],
+            ["fbjs", "npm:3.0.0"],
+            ["graphql", "npm:15.6.1"],
+            ["invariant", "npm:2.2.4"],
+            ["relay-runtime", "npm:12.0.0"]
+          ],
+          "packagePeers": [
+            "@types/graphql",
+            "graphql"
           ],
           "linkType": "HARD",
         }]
