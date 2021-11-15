@@ -1,5 +1,6 @@
 import { Popover, Divider } from 'antd'
 import { TeamOutlined, BookOutlined } from '@ant-design/icons'
+import Icons from '../Icons';
 
 import graphql from 'babel-plugin-relay/macro'
 import { useLazyLoadQuery } from 'react-relay/hooks'
@@ -8,11 +9,11 @@ import { OrganizationsQuery } from '../../__generated__/OrganizationsQuery.graph
 
 import styles from './Organizations.module.scss'
 // interface OrganizationsProps {
-  // organizations?: NonNullable<AppRepositoryNameQuery['user']>['organizations']    //NonNullable удалит null / undefined из типа.
+// organizations?: NonNullable<AppRepositoryNameQuery['user']>['organizations']    //NonNullable удалит null / undefined из типа.
 // }
 
 // Define a query
-const RepositoryNameQuery = graphql`
+const ORGANIZATION_QUERY_INFO = graphql`
   query OrganizationsQuery($count: Int) {
     user(login: "M0nica") {
       name
@@ -39,19 +40,27 @@ const RepositoryNameQuery = graphql`
 
 const Organizations = () => {
 
-  const data = useLazyLoadQuery <OrganizationsQuery>(
-    RepositoryNameQuery,
-    {count: 4},
-    {fetchPolicy: 'store-or-network'},
+  const data = useLazyLoadQuery<OrganizationsQuery>(
+    ORGANIZATION_QUERY_INFO,
+    { count: 4 },
+    { fetchPolicy: 'store-or-network' },
   );
 
   return (
     <section className={styles.organizations}>
-      <div>{data.user!.name}</div>
+
+      <Icons
+        name='documents-outline'
+        color='#000'
+        size='32'
+        className='button-left-panel'
+      />
+
+      {/* <div>{data.user!.name}</div> */}
       <h4>Organizations</h4>
       <div className={styles.logoContainer}>
-        {data.user!.organizations ? (
-          data.user!.organizations.nodes?.map(item => {
+        {data.user && data.user.organizations ? (
+          data.user.organizations.nodes?.map(item => {
             return item ? (
               <div key={item.id}>
                 <Popover
@@ -69,8 +78,9 @@ const Organizations = () => {
                       </div>
                       <Divider style={{ margin: '5px 0 5px 0', padding: '0', width: '100%' }} />
                       <div className={styles.popFooter}>
+
                         <BookOutlined />
-                          <p>{item.membersWithRole.totalCount} repositories</p>
+                        <p>{item.membersWithRole.totalCount} repositories</p>
                         <TeamOutlined />
                         <p>{item.itemShowcase.items.totalCount} members</p>
                       </div>
